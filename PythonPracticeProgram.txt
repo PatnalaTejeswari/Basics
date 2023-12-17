@@ -1,0 +1,722 @@
+Linux:
+
+1) GRUB
+2) cat--Cat(concatenate) command is very frequently used in Linux. It reads data from the file and gives their content as output. It helps us to create, view, concatenate files. So let us see some frequently used cat commands.
+3) Apt. The apt command is a powerful command-line tool, which works with Ubuntu's Advanced Packaging Tool (APT) performing such functions as installation of new software packages, upgrade of existing software packages, updating of the package list index, and even upgrading the entire Ubuntu system.
+4) The insmod command runs when CS Linux is started and the rmmod command runs when Linux is shut down or CS Linux updates are applied. Use the lsmod command to see what kernel modules are currently loaded. This is a list of the kernel module drivers which are currently loaded, as produced by the lsmod command.
+5) Sudo (su “do”) allows a system administrator to delegate authority to give certain users (or groups of users) the ability to run some (or all) commands as ...
+---------------------------------------
+IMP:
+def write_into_file(data):
+    f=open("somefile","a")
+    f.write(data)
+    f.write("0")
+
+write_into_file("345")
+--------------------------------------------
+for i in range(0,60):
+    for j in range(0, 60):
+        print("0" , i, ":0", j,)
+-------------------------------------------------------------------------------------------------------------------
+def write_into_file(data):
+    f=open("somefile","a")
+    f.write("todays date: 04 april 02")
+    f.write(data)
+
+def mode1():
+    inp = input("Enter the input1:")
+    # print(inp)
+    a = int(inp) + 10
+    for a in range(int(inp), a):
+        print(a)
+        write_into_file(a)
+
+
+def mode2():
+    begining = input("Enter the input2:")
+    con = input("Enter how many consecutive numbers you want:")
+    ending = int(begining) + int(con)
+    for a in range(int(begining), int(ending)):
+        print(a)
+        write_into_file(a)
+
+# mode1()
+# mode2()
+user_input = input(("Enter which mode you want:"))
+while ((user_input!= "1") and (user_input!="2")):
+    print("enter 1 or 2 only")
+    user_input=input("please give input:")
+
+if (user_input == "1"):
+    mode1()
+elif (user_input == "2"):
+    mode2()
+#else:
+ #   print(output)
+--------------------------------------------------------------------------------------------------------------------------
+import datetime
+import os
+
+my_date=datetime.datetime.now()
+
+def helper(filename):
+    f=open(filename,"w")
+    for i in range(1,11):
+        for j in range(1,11):
+            f.write(str(i)+"*"+str(j)+"="+str(i*j))
+            f.write("\n")
+        f.write("\n")
+
+def help_me_in_delete(filenames):
+    for file in filenames:
+        ip=input("do you want to delete"+file)
+        if ip=="y":
+            os.remove(file)
+        else:
+            print("file not removed , OK")
+
+def validate(num):
+    count=0
+    while num != 0:
+        num //= 10
+        count += 1
+    if(count>1):
+        return 1
+    else:
+        return 0
+
+switch=11
+file_names_user_created=[]
+for x in range(0,11):
+        date=my_date.day + x
+        if validate(date):
+            date=date
+        else:
+            date="0"+str(date)
+        file_name="C:\\Users\\TEMP\\"+str(date)+"-"+str(my_date.month)+"-"+str(my_date.year)+".txt"
+        print("do you want to create the file:",end="")
+        print(file_name)
+        print("y/n")
+        ip=input()
+        if input !="y":
+            switch=0
+        if input !="n":
+            switch=0
+        while(switch):
+            print("please enter y or n")
+            if ip=="y":
+                switch=0
+            if ip=="n":
+                switch=0
+            ip=input()
+        if(ip=="y"):
+            file_names_user_created.append(file_name)
+            helper(file_name)
+        else:
+            pass
+
+help_me_in_delete(file_names_user_created)
+--------------------------------------------------------------------------------------------------------------------------
+import datetime
+
+my_date=str(datetime.datetime.now())
+my_date=my_date.replace(" ","")
+my_date=my_date.replace(":","_")
+my_date=my_date.replace(".","_")
+my_file_name="C:\\Users\\TEMP\\"+"xyz"+".txt"
+my_file_name=my_file_name.replace(" ","")
+f=open(my_file_name,"a")
+j=open(my_file_name."r")
+file_contents=f.readlines()
+min=int(input("enter the min:"))
+max=int(input("enter the max:"))
+while(min<max):
+    for i in range(1,11):
+        #print(str(min)+"*"+str(i)+"="+str(min*i))
+        line=str(min)+"*"+str(i)+"="+str(min*i)
+        for data in f.readlines():
+                if line in data:
+                    print("this data already exists in file")
+                else:
+                    print("data not exists re-writing")
+        f.write("\n")
+    f.write("\n")
+    print("--"*80)
+    min+=1
+--------------------------------------------------------------------------------------------------------------------------
+#a="hi teju" [::-1]
+#print(a)
+'''import os
+filename="C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\Desktop\\firsttext.txt"
+f=open(filename)
+content = f.read()
+print(content) # hi teju
+content_1 = content[::-1]
+print(content_1)
+f.close()
+'''
+# --------------------
+'''
+import os
+f= open("C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\Desktop\\firsttext.txt", "r+")
+f.seek(0)
+f.truncate()
+import string
+a=(list(string.ascii_lowercase))
+b=(list(string.ascii_uppercase))
+for i in range (1,100001):
+    num=print(i)
+
+with open("C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\Desktop\\firsttext.txt", "w") as file:
+    file.write('\n'.join(a))
+    file.write('\n'.join(b))
+    file.write('\n'.join(str(num)))
+f.close()
+'''
+
+'''
+import shutil
+import os
+src_dir= "C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\Desktop\\fol1"
+dest_dir="C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\Desktop\\fol2"
+files= os.listdir(src_dir)
+#files1=os.listdir(dest_dir)
+print(files)
+#print(files1)
+shutil.copytree(src_dir, dest_dir)
+'''
+
+
+'''import os
+import paramiko
+ssh = paramiko.SSHClient()
+ssh.load_host_keys(os.path.expanduser(os.path.join("~", ".ssh", "known_hosts")))
+ssh.connect(hostname="hypveskc019", username="Administrator", password="folsom_1")
+sftp = ssh.open_sftp()
+sftp.put("C:\\Users\\tpatnalx\\OneDrive - Intel Corporation\\trailrunpython", "\\hypveskc019\\Users\\Administrator\Desktop\\tejeswari")
+sftp.close()
+ssh.close()
+
+
+# print(paramiko.__version__)
+'''
+'''
+import os
+import socket
+import paramiko
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect(hostname='hypveskc019',username='Administrator',password='folsom_1')
+socket.getaddrinfo('localhost', 8080)
+sftp.client=ssh.open_sftp()
+sftp_client.close()
+ssh.close()
+'''
+'''a = 79
+
+# Base 2(binary)
+bin_a = bin(a)
+print(bin_a)
+print(int(bin_a, 2)) #Base 2(binary)
+'''
+--------------------------------------------------------------------------------------------------------------------------
+p=int(input("enter the p value:"))
+t=int(input("enter the t value:"))
+r=int(input("enter the r value:"))
+si=(p*t*r/100)
+print(si)
+total_amount=si+p
+print(total_amount)
+--------------------------------------------------------------------------------------------------------------------------
+def mode1():
+      inp=input("Enter the input1:")
+      #print(inp)
+      a = int(inp) + 10
+      for a in range(int(inp),a):
+            print(a)
+def mode2():
+      begining=input("Enter the input2:")
+      con=input("Enter how many consecutive numbers you want:")
+      ending = int(begining) + int(con)
+      for a in range(int(begining),int(ending)):
+            print(a)
+#mode1()
+#mode2()
+user_input=input(("Enter which mode you want:"))
+if (user_input=="1"):
+      mode1()
+elif (user_input=="2"):
+ mode2()
+else:
+    print(output)
+--------------------------------------------------------------------------------------------------------------------------
+#empty()
+#size()
+#top()/peek()
+#push(a)
+#pop()
+
+#----------------------
+
+import os
+a=int(input("enter the num:"))
+for i in range(1,11):
+    mul= a, 'x', i, '=', a*i
+    print(mul)
+#f = open("C:\\Users\\tpatnalx\\Downloads\\multiplication_output.txt", "w")
+#f.write()
+#print("Data is succesfully written!")
+#f.close()
+
+--------------------------------------------------------------------------------------------------------------------------
+print("hi")
+for i in range(0,60):
+    for j in range(0,60):
+        print("0"+str(i) + ":" +"0"+str(j))
+		
+		
+-----------------------------------------------------------------------------------------------------------------------
+def fun_crct(table):
+    #table=int(input("enter a required table:"))
+    for i in range(1,11):
+        print(table, 'x', i, '=', table*i)
+
+
+def fun_wrong(table):
+    #table=int(input("enter a required table:"))
+    for i in range(1,11):
+        print(table, 'x', i, '=', (table*i)-1)
+
+
+
+
+user_input=input("Do you want to print the correct table:")
+if user_input == "y":
+    ip=int(input("enter a required table:"))
+    fun_crct(ip)
+else:
+    ip=int(input("enter a required table:"))
+    fun_wrong(ip)
+-----------------------------------------------------------------------------------------------------------------------
+import time
+
+def sum_of_digits(ip):
+    ip=int(ip)
+    cnt=0
+    while ip:
+        ip= int(ip/10)
+        cnt+=1
+    if cnt >1:
+        return 1
+    else:
+        return 0
+
+for h in range(0,24):
+    for i in range(56,60):
+                if (sum_of_digits(i)):
+                    print("0"+str(h)+":"+ str(i))
+                else:
+                    print("0"+str(h)+":"+"0" + str(i))
+                time.sleep(60)
+-----------------------------------------------------------------------------------------------------------------------
+
+def sum_of_digits(ip):
+    ip=int(ip)
+    cnt=0
+    while ip:
+        ip= int(ip/10)
+        cnt+=1
+    if cnt >1:
+        return 1
+    else:
+        return 0
+
+print(sum_of_digits(264762))
+------------------------------------------------------------------------------------------------------------------------
+import time
+#serial_number=0
+start_time= time.time()
+print(int(start_time))
+for j in range(0,168):
+    for h in range(0,256):
+        for i in range(0,256):
+                print("192." + str(j) + "." +str(h) + "." + str(i))
+end_time=time.time()
+print(int(end_time))
+diff= end_time-start_time
+print(int(diff))
+'''
+                #time.sleep(5)
+                #serial_number+=1
+#print(serial_number)
+----------------------------------------------------------------------------------------------------------------------
+sum of my phone number:
+ip=int(input("Enter the number:"))
+i=0
+while ip:
+    i= i+(ip % 10)
+    i=int(i)
+    ip=ip/10
+    ip=int(ip)
+print(i)
+
+------------------------------------------------------------------------------------------------------
+def get_cube(res):
+    cube=res*res*res
+    return cube
+
+
+ip=int(input("Enter the number:"))
+i=0
+while ip:
+    i= i+ get_cube(ip % 10)
+    ip=ip/10
+    ip=int(ip)
+print(i)
+
+------------------------------------------------------------------------------------------------------
+
+ip=int(input("enter the number"))
+i=0
+while ip:
+    i=i+(ip%10)
+    i=int(i)
+    ip=(ip/10)
+    ip=int(ip)
+print(i)
+if (i%2==0):
+    print("even")
+else:
+    print("odd")
+---------------------------------------------------------------------------------------------------------
+1.write 1 to 1000 tables in a file  but skip 7 table ,13 table ,27 table,586 table and also find the time taken to execute this program ,write the time taken to execute in the file it self.
+
+2.reverse an integer ,i/p 12345 ,o/p :54321 
+
+
+3. find sum of digits until ,it's sum is equal to single digit .
+	i/p :8801857378  -->> sum is 55 and again 5+5 is 10 --> again 1+0 is 1
+	o/p : 1
+	
+4. print the below patterns on screen.
+
+
+pattern 1:
+			*
+			**
+			***
+			****
+			*****
+
+pattern 2:
+			*****
+			****
+			***
+			**
+			*
+pattern 3:
+			*
+			**
+			***
+			****
+			*****
+			*****
+			****
+			***
+			**
+			*
+
+5)get todays date and print todays date as 16-APR-2023 on screen.
+
+----------------------------------------------------------------------------------
+
+
+2) got the output
+input = "12345"[::-1]
+print(input)
+----------------------------------------------------------------------------------
+5) got the output
+from datetime import date
+today = date.today()
+print(today.strftime("%d-%b-%Y"))
+----------------------------------------------------------------------------------
+1) unable to dump the o/p to file
+import datetime
+import time
+import os
+for i in range(1,11):
+    print("*"*50)
+    if i in [7,13,27,586]:
+        continue
+    for j in range(1,11):
+        print(i, 'x', j, '=', i*j)
+        #res=(i, 'x', j, '=', i*j)
+#f = open("somefile", "w")
+#f.write(str(res))
+#f.close
+end_time=time.time()
+print(int(end_time))
+
+----------------------------------------------------------------------------------
+3) unable to get the single digit as o/p
+ip=int(input("Enter the number:"))
+i=0
+while ip:
+    i= i+(ip % 10)
+    i=int(i)
+    ip=ip/10
+    ip=int(ip)
+print(i)
+
+----------------------------------------------------------------------------------
+
+4)def pattern1():
+    for i in range(1,6):
+        for j in range(0,i):
+            print("*",end="")
+        print("\n",end="")
+
+def pattern2():
+    i=5
+    while i:
+        for j in range(0,i):
+            print("*",end="")
+        print("\n",end="")
+        i-=1
+def pattern3():
+    for i in range(1,6):
+        for j in range(0,i):
+            print("*",end="")
+        print("\n",end="")
+    k=5
+    while k:
+        for l in range(0,k):
+            print("*",end="")
+        print("\n",end="")
+        k-=1
+
+
+print("processing pattern 1")
+pattern1()
+print("-"*80)
+print("processing pattern 2")
+pattern2()
+print("-"*80)
+print("processing pattern 3")
+pattern3()
+print("-"*80)
+-------------------------------------------------------------------------
+
+6) find the largest number among the given input numbers
+a=3
+b=9
+c=7
+if (a>=b) and (a>=c):
+    largest= a
+elif (b>=a) and (b>=c):
+    s_largest=b
+else:
+    largest=c
+print("The largest number is", s_largest)
+
+-------------------------------------------------------------------------
+7)factorial of a given number:
+ip = int(input("Enter a number: "))
+
+fact = 1
+
+if ip < 0:
+   print("Entered number is negative numbers.")
+elif ip == 0:
+   print("The factorial of 0 is 1.")
+else:
+   for i in range(1,ip + 1):
+       fact = fact*i
+   print("The factorial of",ip,"is",fact)
+-------------------------------------------------------------------------
+8)for i in range(1,5):
+    for j in range(1,11):
+            if (i==2 and j==3):
+                print(100, end=" ")
+                continue
+            if i==4:
+                print((i*j)*100,end=" ")
+            else:
+                print(i * j, end=" ")
+
+    print("\n", end="")
+
+
+
+-------------------------------------------------------------------------
+9)my_list=[]
+for i in range(1,11):
+    my_list.append(int(input(f"enter {i} number: ")))
+
+print("user supplied data is")
+print(my_list)
+highest =0
+for data in my_list:
+    if data > highest:
+        highest=data
+
+print("highest is :"+str(highest))
+
+
+--------------------------------------------------------------------------
+file1 = open("test.py", "r")
+file2 = open("test1.py", "r")
+total_list=[]
+for line in file1.readlines():
+        if line!="\n":
+                total_list.append(line)
+total_list.append("-"*80+"\n")
+
+for line in file2.readlines():
+        total_list.append(line)
+
+counter=0
+for line in total_list:
+        if "print" in line:
+                counter+=1
+print(counter)
+
+
+--------------------------------------------------------------------------
+LIST TASKS : WW16.1 _(should review by S)
+'''my_list= [9,81,9,12,14,16,17,18,81]
+print(f"List contains {len(my_list)} elements")
+--------
+'''
+'''
+remove duplicates: 
+def my_function(x):
+  return list(dict.fromkeys(x))
+
+mylist = my_function([9,81,9,12,14,16,17,18,81])
+
+print(mylist)
+
+----------------------------
+'''
+'''
+my_list= [9,81,9,12,14,16,17,18,81]
+my_list.sort()
+print(my_list)
+my_list.sort(reverse = True)
+print(my_list)
+
+--------------------------
+'''
+'''
+my_list= [9,81,9,12,14,16,17,18,81]
+my_list.reverse()
+print("Revesed list :",my_list)
+'''
+'''
+my_list= [9,81,9,12,14,16,17,18,81]
+res=sum(my_list)
+print(res)
+
+or
+'''
+my_list= [9,81,9,12,14,16,17,18,81]
+sum=0
+for i in range(0,len(my_list)):
+    sum=sum+my_list[i]
+print(sum)
+----------------------------------------------------------------------------------
+my_list= [9,81,9,12,14,16,17,18,81]
+print(my_list[-2])
+----------------------------------------------------------------------------------
+list1=[4,2,3]
+list2=[5,5,6]
+result=[]
+for i in range(len(list1)):
+    result.append(list1[i]*list2[i])
+print("result:", str(result))
+------------------------------------------------------------------------------------
+BubbleSort:
+import sys
+import random
+
+def looping_required(arr):
+    i=0
+    cnt=0
+    while(i<len(arr)-1):
+        if (arr[i]>arr[i+1]):
+            cnt+=1
+        i+=1
+    if cnt>0:
+        return 1
+    else :
+        return 0
+
+def bubble_sort(arr):
+    print("input")
+    print("-"*30)
+    print(arr)
+    print("-"*30)
+    n = len(arr)
+    count = 0
+
+    for i in range(n-1):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        if not looping_required(arr):
+            count+=1
+            print(arr)
+            print(count)
+            if(count==1):
+                sys.exit(0)
+        count+=1
+        print(arr)
+    print(count)
+    return arr
+
+#my_list = [64, 34, 25, 12, 22, 90,11]
+while True:
+  my_list=[]
+  for i in range(0,7):
+   my_list.append(random.randint(0,100))
+  sorted_list = bubble_sort(my_list)
+  print("Sorted list:", sorted_list)
+  
+---------------------------------------------------------------------------------------------------
+
+MAILSENDING:
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+# Email configuration
+sender_email = "tejutejeswari1@gmail.com"
+#receiver_email = "teja9951965469@gmail.com"
+receiver_email = "saimanoj262@gmail.com"
+#receiver_email = "miryalasrimannarayana@gmail.com"
+subject = "Testmail"
+message = ""
+# Create a multipart message
+msg = MIMEMultipart()
+msg["From"] = sender_email
+msg["To"] = receiver_email
+msg["Subject"] = subject
+# Add body to the email
+msg.attach(MIMEText(message, "plain"))
+# SMTP server configuration
+smtp_server = "smtp.gmail.com"
+smtp_port = 587  # Use the appropriate port for your email provider
+# Establish a secure connection with the SMTP server
+with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.starttls()
+    # Login to your email account
+    cnt=0
+    server.login(sender_email, "nvetyvfueyntkmkv")
+    # Send the email
+    for i in range(0,100):
+        server.send_message(msg)
+        cnt+=1
+        print("Email sent successfully!")
+print(cnt)
+------------------------------------------------------------------------------------------------------------
