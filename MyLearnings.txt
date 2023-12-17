@@ -1,0 +1,437 @@
+C - Vector book, YT, FLM
+Python
+Linux 
+ARM vs x86 architecture.
+
+For interview basics refer from line 173.
+-------
+
+Intel@corp1
+i/p: yuv and format changes for 10bit.should do encode
+
+
+
+Regression, Functionality, Sanity, Stress
+FPGA
+Pre-silicon
+Post-Silicon
+API(directx, Open CL, Open GL)---s/w team handles.
+Integrated GPU---hard block in CPU.
+
+The most important tools that can help you debug complex workloads:
+• GfxPlayer ( http://goto/gfxbench): A tool within GfxBench toolset that is primarily used to replay DirectX API based graphics workloads (frames/streams/traces). It provides many very useful debugging features such as frames subcapturing, render targets and shaders dumping, limiting the number of drawcalls etc.
+• PIX on Windows ( https://devblogs.microsoft.com/pix/download/): Performance tuning and debugging tool for DirectX 12 workloads (although it also works for DirectX 11 workloads) developed by Microsoft. It significantly simplifies the analysis of complex workloads and provides great debugging reference data. Unfortunately, its disadvantage is instability which makes it impossible to use this tool for some workloads. 
+• ImageCompare ( http://goto/imagecompare): An image comparison tool that can be very helpful when analyzing dumped render targets or screenshots. It also provides a feature for efficient (multi-threading based) comparison of large sets of images, which is very useful in one of the debugging stages.
+• AubBrowser ( http://goto/aubtools): A tool designed to browse .aub files that can also be extremely helpful during debug process.
+
+From <https://wiki.ith.intel.com/display/intelgeneralwiki/Cobalt+Gfx+Generic+Platform> 
+------------------
+Gear ratio*chip clk freq======max mem freq
+system hang ki we use scandump-----we have scripts and import them.
+
+dump-----motham anni capture avtai 
+trace------only driver edi aite memory/ module ni touch(read/write) chestadoo adi matrame it captures
+
+-------------------
+Event Based : a.Drawcall.b. Frame
+
+Logic Analyzer--TLA---> RTL side nunchi issue entoo telskotaniki (complete hardware), gives info regarding protocol too(KeySight Technologies). Tektronics logic analyzer---> currently not using.
+Oscilloscope(Tektronics)-------> Gives infor from source(hardware) to destination( edp) where the signal is getting drop. (clock signals)
+
+WPA---------------------------> to check the trace log
+MMIO Decoder(Internal tool)---> to check the register values.
+
+##########################################################################################################################################################################
+
+Hyper-Threading Technology provides thread-level-parallelism (TLP) on each processor resulting in increased utilization of processor execution resources.
+
+RSS, sometimes described as Queue/Core affinity, is a performance feature that distributes the kernel-mode network processing load across multiple physical processor cores in a multi-core computer. This allows the system to support much higher network traffic loads than would be possible if a single core is used.  The receive cores used for RSS are dynamically allocated by the operating system based on traffic demand.  Intel 10GbE Ethernet adapters typically support between 1 and 16 RSS queues which are selectable in the advanced settings tab. These values should be considered as a "maximum value" because the RSS queues are dynamically allocated based on traffic load, and they can only be assigned to physical cores. If you have a system with four physical cores you can still configure the adapter for 8 or 16 RSS queues but only a maximum of four will be used.
+
+For every receive queue assigned to a core there's also an associated transmit queue. This is to avoid a phenomenon known as cache thrash where a Tx queue and an Rx queue handling the same traffic streams are being serviced by different physical cores.
+
+Hyper-Threading Technology is a form of simultaneous multithreading technology introduced by Intel. Architecturally, a processor with Hyper-Threading Technology consists of two logical processors per core, each of which has its own processor architectural state. Each logical processor can be individually halted, interrupted or directed to execute a specified thread, independently from the other logical processor sharing the same physical core.
+
+Unlike a traditional dual-core processor configuration that uses two separate physical processors, the logical processors in a Hyper-Threaded core share the execution resources. These resources include the execution engine, the caches, the system-bus interface and the firmware. These shared resources allow the two logical processors to work with each other more efficiently, and lets one borrow resources from the other when one is stalled. A processor stalls when it is waiting for data it has sent for so it can finish processing the present thread. The degree of benefit seen when using a hyper-threaded or multi core processor depends on the needs of the software, and how well it and the operating system are written to manage the processor efficiently.
+
+Hyper-threading works by duplicating certain sections of the processor—those that store the architectural state—but not duplicating the main execution resources. This allows a hyper-threading processor to appear as the usual "physical" processor and an extra "logical" processor to the host operating system (HTT-unaware operating systems see two "physical" processors), allowing the operating system to schedule two threads or processes simultaneously and appropriately. When execution resources would not be used by the current task in a processor without hyper-threading, and especially when the processor is stalled, a hyper-threading equipped processor can use those execution resources to execute another scheduled task. (The processor may stall due to a cache miss, branch misprediction, or data dependency.)
+
+	
+Receive side scaling (RSS) is a network driver technology that enables the efficient distribution of network receive processing across multiple CPUs in multiprocessor systems.
+When Receive Side Scaling (RSS) is enabled, all of the receive data processing for a particular TCP connection is shared across multiple processors or processor cores. Without RSS, all of the processing is performed by a single processor, resulting in inefficient system cache utilization.
+
+----------------------------
+OWN NOTES:
+https://kishoreconnect.com/understanding-processes-threads-and-cpu-cores 
+https://www.makeuseof.com/tag/what-is-the-difference-between-an-apu-a-cpu-and-a-gpu-makeuseof-explains/
+https://www.techslang.com/definition/what-is-an-accelerated-processing-unit-apu/
+https://en.wikipedia.org/wiki/AMD_APU#:~:text=AMD%20Accelerated%20Processing%20Unit%20(APU,IGPU)%20on%20a%20single%20die.
+https://www.youtube.com/watch?v=lrT9Bl0MCXQ --------> HT tech.
+To share the workload ----------> HyperThreading Technology.
+load ekkuva padte system slow avtadi, appudu HT comes into picture. 
+HT is introduced by Intel. Similarly, this is present in AMD processors too and it named as SMT (Simultaneous mutli-threading).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Clock Pulse: In computers, the clock cycle is the amount of time between two pulses of an oscillator. It is a single increment of the central processing unit (CPU) clock during which the smallest unit of processor activity is carried out. The clock is a specific type of signal which oscillates between a high and low state.
+
+Core:https://www.google.com/search?q=how+do+i+define+cores+in+processor&sca_esv=561186545&rlz=1C1GCEA_enIN1061IN1061&ei=MqbuZLLpFKefseMPxaW-mAI&ved=0ahUKEwiyytb7p4OBAxWnT2wGHcWSDyMQ4dUDCA8&uact=5&oq=how+do+i+define+cores+in+processor&gs_lp=Egxnd3Mtd2l6LXNlcnAiImhvdyBkbyBpIGRlZmluZSBjb3JlcyBpbiBwcm9jZXNzb3IyCBAhGKABGMMESNk0UPcEWLIrcAJ4AZABAJgBrwGgAcsPqgEEMi4xNbgBA8gBAPgBAcICChAAGEcY1gQYsAPCAgoQABiKBRiwAxhDwgIHEAAYDRiABMICBhAAGAcYHsICCBAAGAcYHhgPwgIIEAAYCBgHGB7CAgYQABgIGB7CAgoQIRigARjDBBgKwgIEECEYCuIDBBgAIEGIBgGQBgo&sclient=gws-wiz-serp
+
+Thread: https://www.google.com/search?q=how+do+i+define+threads+in+processor&rlz=1C1GCEA_enIN1061IN1061&oq=how+do+i+define+threads+in+processor&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIKCAEQIRigARjDBNIBCDY1MzVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
+
+Regression testing is re-running functional and non-functional tests to ensure that previously developed and tested software still performs as expected after a change. If not, that would be called a regression.
+---------------------------
+
+PipeLining Process: Fetch, Decode, Execute. ( happens simultaneously)
+CISC vs RISC:
+CISC:  Directly uses main memory, More hardware is required. (8051 Mc)
+RISC:  Accesses the values from registers, Less hardware is required. (
+https://intel-my.sharepoint.com/personal/tejeswarix_patnala_intel_com/Documents/Screenshots/feb/PNP/Own.xlsx?web=1
+https://www.youtube.com/watch?v=t46_VCrrf5E
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+x86 architecture (8086 MicroProcessor)
+16-bit MP having 20 address lines and 16 data lines that provides upto 1MB storage.
+Basic FYI: Everything in IC happens through registers and in the form of bits.
+40pin DIP( Dual in package) IC
+It has 2independent functional unit. ( Bus interface unit-BIU and Execution unit-EU)
+	1) BIU function: Fetch the instruction or data from memory or IO.
+			      Writes the data to memory.
+			      Writes data to ports (I/O).
+			      Reads data from ports.
+		The Funtional parts of BIU or  above functions are done by Instruction Pointer(IP), Segment Register(SR), Instruction Queue (IQ).
+			IP: It's a 16-bit registers. Stores the address(ntg but memory location) of next instruction to be executed. In simple words, it stores address.
+			SR: The memory space 1MB of 8086 is segemented(divided) into 4blocks. Each block specified by register with max size 64KB.
+					Code  Segment Register (CS)-------> holds 64KB
+					Data Segment  (DS)------> holds 64KB
+					Stack Segment (SS)------> holds 64KB
+					Extra Segment (ES)------> holds 64KB
+					
+				In total, all 4 registers holds 1MB.
+			IQ(6byte): BIU performs its operation in parallel with EU.
+				BIU fetches instruction byte while execution unit is executing operations.
+				The pre-fetched inst. is saved in group of high speed registers & is known as IQ.
+	2)  EU function: Tells BIU where to fetch the instruction or data from.
+					 To decode the instruction.
+					 To execute the instruction.
+					 EU contains the control ckt to perform varies internal operations.
+		Funtional parts of EU: General Purpose Register(GPRS), Pointer & Indexed register, ALU, Flag Registers, Timers.
+		a) GPRS: 8086MP consists of 4general purpose 16-bit registers. (AX, BX, CX, DX).
+			These 16bit registers are divided into 2 8-bit registers viz; AH,AL (AX), BH,BL (BX), CH,CL (CX), DH,DL (DX).
+		b) Pointer & Indexed Register: 8086 has 2pointers & 2indexed registers.
+			Stack Pointer(SP) & Source Index Register(SI)
+			Base Pointer(BP) & Destination Index Register(DI)
+		c) ALU: It's a 16bit ALU and performs arithmetic and logical operation for 8 & 16-bit operation.
+	IMP-d) Flag: 8086MP  has 16bit flag register.
+		9flags + 6 unused flags.
+		Among 9flags, these are divided into 2categories. 
+			Status flag (6flags)---Indicates status of flag register.
+			Control flag (3flags).
+				6 Status flags: Carry, Auxiliary Carry, Zero, Sign, Parity, Overflow.
+				3 Control flags: Direction, Interrupt Enbale, Trap flag.
+		d) Timing & COntrol Unit:  The CU of EU directs all internal operations & also responsible for generation of control signals.
+NOTE: Ref 8086 pin and block diagram.
+clk pin is heart of 8086, it provides synchronization.
+MN/MX: MInimum and Maximum mode of 8086MP.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+					
+ARM architechture: ARM(Advanced RISC machine).
+1st MP for commercial purpose.
+Eg: VideoGames, Modems, Mobile Phone, Handy Cams, etc...
+Features of ARM: Architectural simplicity ( It allows very small implementations------ used in power consumption).
+History:  Developed at Acon Computers Limited.
+RISC is a competitive, easy to develop and cheap.
+Pointing the way to feature.
+Why RISC came to existence: CISC has slowe rparts and each instruction requires single clock cycle.
+ARM Intro:
+	RISC architecture is large uniform register file.
+	Having load/store architecture.
+	Simple addressing ,odes.
+	Uniform & fixed length insgt. fields.
+Enhancement of RISC: Each inst. controls the ALU & shifter.
+					Auto increment/Decrement addressing modes is introduced.
+					Multiple load/store, conditional inst.
+ARM = Enhancement + above 4points.
+
+Results: High Performance, Low code size, Low power consumption, low silicon area=================> ARM.
+
+ARM architechture: Mainly concerned about instruction set only.
+32bit architecture.
+load/store architecture.
+2types of instruction set-------> 
+			a) 32bit ARM instruction set
+			b) 16bit Thumb instruction set
+			c) Thumb instruction set.
+Load = inst. copies the data from memory to register.
+Store = inst. copies the data from register to memory. 			
+NOTE: Ref 8086 pin and block diagram.
+Data operations and mnaipulations are done only through registers not through memory.
+Two source registers, say rm + rn 
+------------------------------------------------------------------------------------------------------------------------------------------------
+####################################################################################################################################################
+
+----------> Introduce yourself: 
+
+When introducing yourself in an interview, especially for a role like a Graphics Hardware Post-Silicon Power and Performance Engineer with 2 years of experience, it's essential to convey your skills, experience, and enthusiasm for the position. Here's a sample introduction you can use as a reference:
+
+**"Hello, I'm [Your Name], and I am thrilled to be here today. With a background in Graphics Hardware Post-Silicon Power and Performance Engineering, I bring a solid foundation of technical expertise and hands-on experience.
+
+Over the past two years, I've had the privilege of working in the dynamic field of graphics hardware, focusing specifically on post-silicon aspects related to power and performance optimization. In my previous role, I successfully contributed to [mention any specific achievements or projects], where I honed my skills in [mention specific skills such as performance analysis, power profiling, debugging, etc.].
+
+My technical proficiency extends to [mention any relevant tools or technologies you've worked with], and I have a keen eye for identifying and implementing optimizations to enhance both power efficiency and performance. I am passionate about staying abreast of the latest developments in graphics hardware, and I am eager to bring my knowledge and skills to a team that values innovation and excellence.
+
+I am particularly drawn to [Company Name] because of its reputation for [mention something specific about the company that attracts you, such as cutting-edge technology, collaborative work environment, etc.]. I am excited about the prospect of contributing my expertise to the team and helping drive success in the realm of graphics hardware.
+
+Thank you for considering my application, and I look forward to discussing in more detail how my experiences align with the needs of [Company Name]."**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------> Certainly, here are sample answers to the interview questions for a Validation Engineer with 2 years of experience in power and performance testing:
+
+1. **Can you explain what power and performance validation is, and why it's important in the context of hardware or software development?**
+Power and performance validation involves the testing and assessment of hardware or software systems to ensure they meet their power efficiency and performance requirements. It's crucial because it helps identify bottlenecks, inefficiencies, and opportunities for optimization, ultimately leading to better user experiences and cost savings for organizations.
+
+2. **What tools and methodologies have you used for power and performance testing in your previous roles?**
+In my previous roles, I've used a combination of performance monitoring tools like PerfMon and specialized benchmarking tools such as SPEC CPU2006. I've also leveraged custom scripts for automated testing. Additionally, I follow industry-standard methodologies like APM (Application Performance Management) and APM methodologies to assess performance.
+
+3. **Can you describe the key performance metrics and parameters you've monitored and evaluated in your previous projects?**
+
+   *Answer:* In previous projects, I've focused on metrics like response time, throughput, CPU utilization, memory consumption, and network latency. For power, I've monitored energy consumption, thermal performance, and power usage across various components.
+
+4. **How do you approach benchmarking and performance testing for different hardware components (e.g., CPUs, GPUs, memory) or software applications?**
+
+   *Answer:* I start by identifying the specific components or applications to test. Then, I design relevant workloads, run tests with appropriate benchmarking tools, and collect data. Afterward, I analyze the results, identify performance bottlenecks, and work on optimizations.
+
+5. **Have you worked with specific benchmarking tools or frameworks? Can you provide examples of how you used them in your previous work?**
+
+   *Answer:* Yes, I've used tools like Geekbench for CPU benchmarking, 3DMark for GPU performance, and Apache JMeter for load testing web applications. For a recent project, I employed the PCMark suite to assess overall system performance.
+
+6. **What challenges have you encountered in power and performance validation, and how did you overcome them?**
+
+   *Answer:* One common challenge is simulating real-world scenarios accurately. To overcome this, I collaborate closely with development teams and apply load patterns that mimic user behavior as closely as possible. Communication and teamwork are key in addressing such challenges.
+
+7. **Can you describe a specific project where you successfully improved the power efficiency or performance of a hardware or software system?**
+
+   *Answer:* In a recent project, I optimized a mobile app's performance by reducing unnecessary network requests and improving image loading strategies. This led to a 30% reduction in power consumption and a significant boost in user satisfaction.
+
+8. **How do you conduct load testing to evaluate the performance of a system under different conditions, such as peak loads or extended usage?**
+
+   *Answer:* I create load testing scenarios that simulate peak loads and extended usage. I use tools like Apache JMeter and gradually increase the virtual user load while monitoring performance metrics. This helps identify bottlenecks and potential issues under real-world conditions.
+
+9. **Have you worked with scripting or automation tools to perform power and performance tests? If so, which languages or tools are you proficient in?**
+
+   *Answer:* Yes, I've extensively used Python for scripting and automation, especially for setting up test scenarios and analyzing results. I've also used shell scripts and batch scripting for specific tasks.
+
+10. **How do you interpret and analyze the data obtained from power and performance tests? What actions do you take based on the results?**
+
+    *Answer:* I analyze the data to identify performance bottlenecks and power inefficiencies. I then work with development teams to implement optimizations, such as code refactoring or system configuration changes, based on the findings. It's essential to track improvements and conduct follow-up tests.
+
+These answers provide a framework for responding to common interview questions for a Validation Engineer with experience in power and performance testing. Make sure to customize your responses based on your actual experiences and projects.
+
+------------------------------------------------------------------------------
+---------> Silicon validation is a critical step in the semiconductor manufacturing process to ensure that the fabricated silicon wafers meet the design specifications and function as intended. The workflow for silicon validation involves several key stages:
+
+Design Verification:
+
+Before silicon fabrication begins, the design of the integrated circuit (IC) undergoes extensive verification using simulations and emulation. This stage aims to catch design errors and ensure that the design meets the desired specifications.
+Mask and Wafer Fabrication:
+
+Once the design is verified, the semiconductor fabrication process begins. This involves creating masks that define the patterns for the different layers of the IC. The masks are used to expose a silicon wafer to various processes, such as photolithography and etching, to create the actual circuit components.
+Wafer Testing (Parametric Test):
+
+After fabrication, the silicon wafers undergo parametric testing to measure key electrical characteristics, such as resistance, capacitance, and transistor characteristics. This helps identify any systematic defects in the manufacturing process.
+Wafer Sort and Bin:
+
+The tested wafers are sorted based on their performance characteristics. Binning involves categorizing the wafers into different bins based on their functionality and performance. This step helps in identifying wafers that meet the specifications for further processing.
+Wafer Probing and Test Program Development:
+
+Individual die on the wafer are probed to check for functionality and to develop a test program. The test program is a set of instructions that will later be used to test packaged chips.
+Die Packaging:
+
+The good die from the wafer are separated, and each die is packaged into a semiconductor package. The packaging process involves encapsulating the die in a protective material and attaching it to a substrate.
+Final Test:
+
+The packaged chips undergo final testing using the test program developed during wafer probing. This step ensures that the packaged chips meet the specified functional and performance criteria. It involves functional testing, speed testing, and other tests depending on the application.
+Quality Assurance:
+
+Quality assurance processes are implemented to ensure that the packaged chips meet industry standards and customer requirements. This includes reliability testing, environmental testing, and other forms of stress testing.
+Product Release:
+
+Once the silicon validation process is successfully completed, the semiconductor products are released for commercial production and distribution.
+Throughout the entire silicon validation workflow, collaboration between design, fabrication, testing, and quality assurance teams is essential to identify and address any issues that may arise. Continuous improvement processes are often implemented to enhance the efficiency and reliability of the silicon validation workflow.
+----------------------------------------------------------------------------
+---------------------->Describing the power and performance of graphics involves assessing various aspects of a graphics system. Here are key factors to consider:
+
+1. **Processing Power:**
+   - **GPU Model and Architecture:** Specify the GPU model and its architecture. Newer architectures often bring improved performance and efficiency.
+   - **Cores and Clock Speed:** The number of processing cores and their clock speed impact parallel processing capabilities.
+
+2. **Memory and Bandwidth:**
+   - **VRAM Size:** The amount of Video RAM (VRAM) affects the GPU's ability to handle large textures and high-resolution content.
+   - **Memory Bandwidth:** Higher memory bandwidth allows for faster data transfer between the GPU and VRAM.
+
+3. **Compute Capabilities:**
+   - **CUDA Cores (NVIDIA) or Stream Processors (AMD):** These represent the GPU's ability to perform parallel processing tasks.
+   - **Tensor Cores (for AI/ML tasks):** Modern GPUs may include specialized cores for machine learning tasks.
+
+4. **API Support:**
+   - **DirectX and OpenGL Versions:** Support for the latest versions ensures compatibility with new games and applications.
+   - **Vulkan and DirectX 12 Ultimate:** These APIs provide improved performance and graphical effects.
+
+5. **Performance Benchmarks:**
+   - **Frames Per Second (FPS):** Measure in-game performance, higher FPS indicates smoother gameplay.
+   - **Benchmark Scores:** Refer to standardized benchmarks like 3DMark for comparative performance metrics.
+
+6. **Power Efficiency:**
+   - **TDP (Thermal Design Power):** This indicates the maximum amount of heat a GPU is designed to generate under workload.
+   - **Efficiency Ratings:** Look for GPUs with high performance-per-watt ratios.
+
+7. **Cooling Solutions:**
+   - **Cooling Design:** The efficiency of the cooling solution affects how well the GPU maintains performance under load.
+   - **Heat Sink, Fans, and Vapor Chamber:** Components that contribute to cooling efficiency.
+
+8. **Ray Tracing and AI Features:**
+   - **Ray Tracing Cores:** Specialized cores for real-time ray tracing improve graphical fidelity.
+   - **DLSS (Deep Learning Super Sampling):** AI-driven upscaling for improved performance in supported games.
+
+9. **Connectivity and Ports:**
+   - **Display Outputs:** Number and type of display outputs (HDMI, DisplayPort) influence multi-monitor setups.
+   - **PCI Express Version:** Higher PCIe versions may offer improved data transfer rates.
+
+10. **Software Ecosystem:**
+    - **Driver Support:** Regular driver updates can enhance performance and compatibility with new games and applications.
+    - **Software Features:** Features like Ansel (NVIDIA) or Radeon Image Sharpening (AMD) can enhance visual quality.
+
+When describing the power and performance of graphics, it's beneficial to provide a comprehensive overview that covers both the hardware specifications and practical performance metrics in real-world scenarios. Keep in mind that the specific aspects to highlight might vary based on the context and audience.
+---------------------------------------------------------
+
+-------------> As discussed, Consolidating the Role & Responsibilities that I handled/handling in PnP for different IPs.
+
+3D:
+- Conducted performance metric analysis using diverse APIs and tools across multiple platforms and projects.
+- Derived key metrics and investigated performance issues.
+- Effectively identified and addressed high-severity defects (HSDs).
+- Ensured high-performance graphics rendering.
+
+Media:
+- Managed performance metric collection for APIs based, various tools, and codecs across a range of platforms and projects.
+- Analyzed performance data and derived critical metrics.
+- Skillfully resolved performance-related issues.
+- Systematically logged and reproduced HSDs.
+- Facilitated codec conversions for performance benchmarking.
+
+Display:
+- Oversaw performance and bandwidth metric assessment for various PMs utilizing a variety of tools on multiple platforms and projects.
+- Conducted in-depth metric analysis to optimize display performance.
+- Actively engaged in feature enablement and debugging.
+- Proficiently addressed and documented HSDs.
+
+Power:
+- Evaluated power consumption metrics for SOC, DE, Memory, and Panel on various platforms and projects with diverse configurations and models.
+- Contributed to optimizing power efficiency.
+
+In addition to these responsibilities, my work has involved:
+- Baselining the DUT
+- Functional testing
+- Stress testing
+- Regression testing
+------------------------------------------
+----------> PCI Express (Peripheral Component Interconnect Express), or PCIe, is a high-speed serial computer expansion bus standard that connects various hardware devices to a computer's motherboard. PCIe is widely used for connecting graphics cards, storage devices, network cards, and other peripheral devices. Here are key aspects of the PCIe protocol:
+
+Data Transfer:
+PCIe uses a serial point-to-point architecture, allowing for high-speed data transfer between devices.
+Each PCIe lane consists of two differential pairs for data transmission: one for sending and one for receiving.
+
+Lanes and Bandwidth:
+PCIe operates with multiple lanes, and the number of lanes determines the overall bandwidth.
+Common lane configurations include x1, x4, x8, x16, providing different levels of data throughput.
+The latest PCIe 4.0 and PCIe 5.0 standards have increased the data transfer rates per lane, further enhancing overall bandwidth.
+
+Versions:
+PCIe has gone through several revisions, including PCIe 1.0, 2.0, 3.0, 4.0, and 5.0, with each version offering higher data transfer rates.
+Each new version maintains backward compatibility with earlier versions, allowing devices to work across different PCIe generations.
+
+Data Rates:
+PCIe 1.0: 2.5 GT/s (Giga-transfers per second) per lane.
+PCIe 2.0: 5 GT/s per lane.
+PCIe 3.0: 8 GT/s per lane.
+PCIe 4.0: 16 GT/s per lane.
+PCIe 5.0: 32 GT/s per lane.
+
+Connector and Form Factors:
+PCIe connectors come in various sizes, with x1, x4, x8, and x16 configurations being the most common.
+Different form factors, such as PCIe cards and M.2 slots, accommodate various devices.
+
+Hot Plug and Play:
+PCIe supports hot-plugging, allowing devices to be added or removed without shutting down the system.
+The system automatically recognizes and configures new devices when hot-plugged.
+
+Switching Architecture:
+PCIe uses a switched fabric topology with a point-to-point connection between the host and each device.
+A PCIe switch allows multiple devices to be connected to a single host.
+
+Power Management:
+PCIe supports various power management states to conserve energy when devices are not actively in use.
+Devices can dynamically adjust their power states based on workload requirements.
+
+Error Handling and Correcting:
+PCIe incorporates advanced error detection and correction mechanisms to ensure reliable data transmission.
+Devices can negotiate link speeds and adapt to the best available performance.
+
+Application Areas:
+PCIe is commonly used for graphics cards, storage devices (NVMe SSDs), network adapters, sound cards, and other high-performance peripherals.
+PCIe has become a crucial standard for modern computer systems, providing a scalable and high-performance interface for connecting a wide range of devices. It continues to evolve with each new version to meet the increasing demands of data-intensive applications.
+-----------------------------------------------------------------------------
+----------------> NVMe protocol and PCIe protocol:
+
+Pallete data registers in display
+V-blank vs H-blank
+v-sync vs a-sync vs h-sync
+https://gfxspecs.intel.com/Predator/Home/Index/49179 --------> Display pipeline
+https://gfxspecs.intel.com/Predator/Home/Index/49235 --------> Pipes
+DDI (Digital Display Interface).
+
+#######################################################################33
+
+#include<stdio.h>
+#include<string.h>
+struct student{
+    char name[30];
+    int rollno;
+};
+
+int main()
+{
+    struct student s1={"tej",12};
+    //printf("%s %d",s1.name,s1.rollno);
+    strcpy(s1.name,"san");
+    s1.rollno=11;
+    printf("%s %d",s1.name,s1.rollno);
+    return 0;
+}
+-------------------------
+#include<stdio.h>  
+#include <string.h>    
+struct student{    
+int rollno;    
+char name[10];    
+};  
+  
+int main(){    
+int i;    
+struct student st[5];    
+printf("Enter Records of 5 students");    
+for(i=0;i<5;i++){    
+printf("\nEnter Rollno:");    
+scanf("%d",&st[i].rollno);    
+printf("\nEnter Name:");    
+scanf("%s",&st[i].name);    
+}    
+printf("\nStudent Information List:");    
+for(i=0;i<5;i++){    
+printf("\nRollno:%d, Name:%s",st[i].rollno,st[i].name);    
+}    
+   return 0;    
+}    
+
+---------------
+
+

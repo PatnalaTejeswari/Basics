@@ -1,0 +1,254 @@
+
+Assignment1: Basics
+
+#include<stdio.h>
+int main()
+{
+    int arr[5],i,aggregate,percentage;
+    printf("Enter the student subject marks:");
+    for (i = 0; i < 5; i++) {
+        //printf("Subject %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+    //scanf("%d",&arr[i]);
+    aggregate= arr[0]+arr[1]+arr[2]+arr[3]+arr[4];
+    //printf ("of all 5 subjects of a student:%d",aggregate);
+
+    percentage=(aggregate*100)/250;
+    printf("Percentage of all 5 subjects of a student:%d",percentage);
+    return 0;
+}
+
+--------------
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int l,b,r,rectangle_area,rectangle_perimeter,circle_area,circle_perimeter;
+    printf("Enter the length of the rectangle:");
+    scanf("%d",&l);
+    printf("Enter the breadth of the rectangle:");
+    scanf("%d",&b);
+    printf("Enter the radius of the circle:");
+    scanf("%d",&r);
+    rectangle_area = l*b;
+    printf("Area of rectangle:%d\n",rectangle_area);
+    rectangle_perimeter = 2*(l+b);
+    printf("Perimeter of rectangle:%d\n",rectangle_perimeter);
+    circle_area = M_PI*r*r;
+    printf("Area of circle:%d\n",circle_area);
+    circle_perimeter = 2*M_PI*r;
+    printf("Perimeter of rectangle:%d\n",circle_perimeter);
+    return 0;
+}
+--------------
+#include<stdio.h>
+int main()
+{
+    int i;
+    printf("Enter a value:");
+    scanf("%d",&i);
+    printf("decimal equivalent:%d\n",i);
+    printf("octal equivalent:%o\n",i);
+    printf("hexa-decimal equivalent:%x\n",i);
+    return 0;
+}
+--------------------
+#include<stdio.h>
+int main()
+{
+    int i;
+    printf("Enter a value:");
+    scanf("%d",&i);
+    printf("ASCII equivalent of input:%c\n",(char)i);
+    return 0;
+}
+------------------------
+
+#include<stdio.h>
+int main()
+{
+    int x,y,result;
+    printf("Enter the inputs:");
+    scanf("%d%d",&x,&y);
+    result = (3 * (x + y) / (9 * x) + 2 * y) - (x - y / (2 * x) + 3 * y);
+    printf("%d",result);
+    return 0;
+}
+---------------------------
+
+Assignment2: Operators
+
+#include<stdio.h>
+int main()
+{
+    int a;
+    a= --2;
+    printf("a=%d",a); // compilation error - leftvalue(lvalue) post decrement.
+    return 0;
+}
+
+-------------
+#include<stdio.h>
+int main()
+{
+int i=2,j=3,k,l;
+float a,b;
+k=i/j*j;  //(i/j)*j
+l=j/i*i;
+a=i/j*j;
+b=j/i*l;
+printf("%d %d %f %f",k,l,a,b);
+}
+---------------------------------------
+#include<stdio.h>
+int main()
+{
+int x=3,y=5,z;
+z=x&&y; //Logical AND
+printf("\n z=%d",z); //T && T-> T i.e; 1
+z=x&y; //Bitwise AND
+printf("\n z=%d",z); // 1
+}
+------------------------------
+#include<stdio.h>
+int main()
+{
+int x=7,y=10,a,b;
+a=x||y; //T i.e; 1
+printf("\n a=%d",a);
+b=x|y; //15
+printf("\n b=%d",b);
+}
+-----------------------------------
+#include<stdio.h>
+int main()
+{
+int x=3,y,z;
+y=x=10; // y=10
+z=x<10; // z= 10<10---> z=0 
+printf("\n x=%d y=%d z=%d",x,y,z);// x=10,y=10,z=0
+}
+-----------------------
+#include<stdio.h>
+int main()
+{
+int k=35;
+printf("\n %d %d %d", k==35,k=50,k>40); //1,k=50,1
+k= -2;
+printf("\n %d",k); // k= -2
+}
+--------------------
+#include<stdio.h>
+int main()
+{
+int x,y;
+scanf("%d",&x);
+y=(x<0)? -x:x;     // If x is less than 0, assign -x to y; otherwise, assign x to y.
+printf("absolute value of %d is %d\n",x,y); // 2.
+}
+-------------
+#include<stdio.h>
+int main()
+{
+int x=2,y=6,z=6;
+x=y==z;
+printf("%d",x); //True i.e;1
+}
+----------------
+#include<stdio.h>
+int main()
+{
+int x=4,y,z;
+y= --x; //3 //Pre-decrement --> --x decrements the value of x before the assignment, After this line, x becomes 3, and y is assigned the value 3.
+z=x--; //4  //Post-decrement--> x-- assigns the current value of x to z and then decrements x, After this line, x becomes 2, and z is assigned the value 4.( value assign chesaka decrement avtundi kabati z=4 undi and x=2 aindi).
+printf("\n %d %d %d",x,y,z); //x=2,y=3,z=4
+}
+-------------------------
+#include<stdio.h>
+int main()
+{
+int a=3,b=4,c=1;
+b=(a>b?(a>c?a:c):(b>c?b:c)); // right to left 
+printf("%d",b); //4
+}
+-----------------
+#include<stdio.h>
+int main()
+{
+int x=5;
+printf("%d %d %d\n",x,x<<2,x>>2);  // 5,20,1
+}
+---------------
+#include<stdio.h>
+int main()
+{
+int x=20,y=35;
+x=y++ + x++;
+y=++y + ++x;
+printf("%d %d\n",x,y); //x=56,y=93
+}
+--------------
+#include<stdio.h>
+int main()
+{
+printf("\n %d %d %d", sizeof('4'),sizeof("4"),sizeof(4)); //size of char: 1, size of string literal: 2, size of int: 4
+
+}
+---------------
+Assignment3: Control Statements
+
+Program1: Check whether the inputted character is lower/upper case.
+
+#include<stdio.h>
+int main()
+{
+int input;
+printf("Enter an input letter:");
+scanf("%c",&input);
+if (input >=97 && input <=122)
+    printf("Entered input is lower case:%c",input);
+else if (input >=65 && input <=90)
+    printf("Entered input is upper case:%c",input);
+return 0;
+}
+
+Program2: Find out the given input number is +ve or -ve, implementing individually conditional execution operator(Ternary Operator), decision control statement(Decision control statements in C include if, else if, else, and switch.
+if and else are used for conditional execution based on a true/false condition. switch allows you to select one of many code blocks to be executed). and bitwise operator.(They include & (AND), | (OR), ^ (XOR), ~ (NOT), << (left shift), and >> (right shift)).
+
+##conditional execution operator(Ternary Operator)
+#include<stdio.h>
+int main()
+{
+    int a;
+    printf("Enter an input:");
+    scanf("%d",&a);
+    (a>0)? printf("Entered number is positive %d",a) : printf("Entered number is negative %d",a);
+    return 0;
+}
+
+## Using Decision Control Statement.
+#include<stdio.h>
+int main()
+{
+    int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    if(num>0)
+    printf("Entered number is positive");
+    else
+    printf("Entered number is negative");
+    return 0;
+}
+
+## Using switch
+
+--------------------------
+
+
+
+
+Program3: Find the grade of the mark input.(Use "nested if" and else if ladder").
+
+Program4: Find out a given input number is power of 2 or not.
